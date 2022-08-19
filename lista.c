@@ -68,6 +68,21 @@ void ord_insert(Lista **ptrPtr, int val) {
       }
     }
     // arrivati alla fine del ciclo, siamo giunti al terzo sotto caso della funzione.
-    suf_insert(ptrPtr, val); // valore maggiore di tutti gli altri valori.
+    suf_insert_rec(ptrPtr, val); // valore maggiore di tutti gli altri valori.
   }
+}
+
+void suf_insert_rec(Lista **ptrPtr, int val) {
+  // implementare la funzione di inserimento in coda con la ricorsione.
+  // caso base: ptr->next == null.
+  if ((*ptrPtr)->nextPtr == NULL) {
+    // creo nuovo_nodo
+    Lista *new_node   = (Lista *)malloc(sizeof(Lista));
+    new_node->valore  = val;
+    new_node->nextPtr = NULL;
+    // imposto (*ptrPtr)->nextPtr = nuovo_nodo.
+    (*ptrPtr)->nextPtr = new_node;
+    return;
+  }
+  suf_insert_rec(&(*ptrPtr)->nextPtr, val);
 }

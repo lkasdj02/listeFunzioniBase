@@ -17,3 +17,4 @@ void print_list(Lista *ptr);
 void pre_insert(Lista **ptrPtr, int val);
 void suf_insert(Lista **ptrPtr, int val);
 void ord_insert(Lista **ptrPtr, int val);
+void suf_insert_rec(Lista **ptrPtr, int val);
