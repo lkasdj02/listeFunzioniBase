@@ -1,4 +1,5 @@
 #include "lista.h"
+#include <stdio.h>
 
 int main() {
   Lista *lista;
@@ -21,4 +22,10 @@ int main() {
   // TESTING IS EMPTY FUNCTION
   (isempty(lista)) ? printf("lista vuota\n") : print_list(lista);
 
+  // TESTING COUNT FUNCTION
+  printf("il numero degli elementi della lista: %d\n", count(lista));
+
+  // TESTING FIND FUNCTION:
+  Lista *nodo = find(lista, 10);
+  (isempty(nodo)) ? printf("nodo non trovato") : print_list(nodo);
 }

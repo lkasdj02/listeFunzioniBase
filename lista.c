@@ -86,3 +86,21 @@ void suf_insert_rec(Lista **ptrPtr, int val) {
   }
   suf_insert_rec(&(*ptrPtr)->nextPtr, val);
 }
+
+int count(Lista *ptr) {
+  // ritornare il numero di elementi presnti all'interno della lista.
+  int node_count = 0;
+  for(Lista *current = ptr; current != NULL; current = current->nextPtr) {
+    node_count+=1;
+  }
+
+  return node_count;
+}
+
+Lista *find(Lista *ptr, int val) {
+  for (Lista *value = ptr; value != NULL; value = value->nextPtr)
+    if (value->valore == val)
+      return value;
+  return NULL;
+}
+
