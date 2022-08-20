@@ -26,6 +26,21 @@ int main() {
   printf("il numero degli elementi della lista: %d\n", count(lista));
 
   // TESTING FIND FUNCTION:
-  Lista *nodo = find(lista, 10);
-  (isempty(nodo)) ? printf("nodo non trovato") : print_list(nodo);
+  Lista *first = find(lista, 4);
+  Lista *last = find(lista, 20);
+  (isempty(first)) ? printf("nodo non trovato\n") : printf("nodo: %d\n", first->valore);
+  (isempty(last)) ? printf("nodo non trovato\n") : printf("nodo: %d\n", last->valore);
+
+  // TESTING FIND_POS
+  last = find_pos(lista, count(lista) - 1);
+  (last == NULL) ?  printf("posizione non corretta\n") : printf("puntatore: %p \t valore: %d\n", last, last->valore);
+
+
+  // TESTING SLICE
+  Lista *nuova_slice = slice(lista, 7, 9);
+  if (nuova_slice == NULL) {
+    printf("controllare di aver immesso delle poizioni corrette\n");
+  } else {
+    print_list(nuova_slice);
+  }
 }

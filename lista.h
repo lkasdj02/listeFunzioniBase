@@ -27,3 +27,17 @@ int count(Lista *ptr);
 // 2. NULL in caso l'elemento cercato non esista
 // all'interno della lista.
 Lista *find(Lista *ptr, int val);
+// PRE: ptr = puntatore a nodo lista.
+// POST: la funzione ritorna:
+// 1. un puntatore all'elemento trovato nella posizione pos.
+// 2. NULL in caso l'elemento cercato non esista (all'interno della lista)
+// o la posizione sia troppo bassa o alta.
+Lista *find_pos(Lista *ptr, unsigned int pos);
+// PRE: ptr = puntatore a nodo della lista
+// n1 = inizio dello slice
+// n2 = fine dello slice.
+// POST: la funzione ritorna un puntatore ad
+// una nuova lista creata contenente i nodoLista
+// che vanno dal nodo avente n1 come valore
+// al nodo avente n2 come valore (n2 compreso).
+Lista *slice(Lista *ptr, int n1, int n2);

@@ -37,7 +37,7 @@ void suf_insert(Lista **ptrPtr, int val) {
     (*ptrPtr)->nextPtr = NULL;
   } else {
     Lista *current = (*ptrPtr);
-
+    
     for(current = (*ptrPtr); current->nextPtr != NULL;)
       current = current->nextPtr;
 
@@ -104,3 +104,54 @@ Lista *find(Lista *ptr, int val) {
   return NULL;
 }
 
+Lista *find_pos(Lista *ptr, unsigned int pos) {
+  int total_nodes = count(ptr); 
+  if (pos > total_nodes || pos < 0) // caso in cui la posizione non sia presente nella lista.
+    return NULL;
+  else {
+    for (int i = 0; i < total_nodes; i++) {
+      if (i == pos) 
+        return ptr;
+      ptr = ptr->nextPtr;
+    }
+    return NULL;
+  }
+}
+
+Lista *slice(Lista *ptr, int n1, int n2) {
+
+  if (n1 > n2 || n1 > count(ptr) - 1 || n2 > count(ptr) - 1) {
+    return NULL;
+  } else {
+    Lista *first = find_pos(ptr, n1);
+    Lista *last = find_pos(ptr, n2);
+
+    printf("first inside function: %p\n", first);
+    printf("last inside function: %p\n", last);
+    if (first == NULL || last == NULL)
+      return NULL;
+    else {
+      // fare il procedimento.
+      Lista *tmp_node = NULL;
+      // inizializzazione di una nuova testa.
+      Lista *new_head = NULL;
+
+      for (Lista *current = first; current != last->nextPtr; current = current->nextPtr) {          
+          
+        // creare nuovo nodo della lista.
+        Lista *new_node = (Lista *)malloc(sizeof(Lista));
+        new_node->valore = current->valore;
+        new_node->nextPtr = NULL;
+
+        if (tmp_node == NULL) {
+          tmp_node = new_node;    
+          new_head = new_node;
+        } else {
+          tmp_node->nextPtr = new_node;
+          tmp_node = new_node;
+        }
+      }
+      return new_head;
+    }
+  }
+}
