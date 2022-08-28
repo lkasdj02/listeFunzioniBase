@@ -31,7 +31,8 @@ Lista *find(Lista *ptr, int val);
 // POST: la funzione ritorna:
 // 1. un puntatore all'elemento trovato nella posizione pos.
 // 2. NULL in caso l'elemento cercato non esista (all'interno della lista)
-// o la posizione sia troppo bassa o alta.
+// o la posizione
+// sia troppo bassa o alta.
 Lista *find_pos(Lista *ptr, unsigned int pos);
 // PRE: ptr = puntatore a nodo della lista
 // n1 = inizio dello slice
@@ -41,3 +42,7 @@ Lista *find_pos(Lista *ptr, unsigned int pos);
 // che vanno dal nodo avente n1 come valore
 // al nodo avente n2 come valore (n2 compreso).
 Lista *slice(Lista *ptr, int n1, int n2);
+
+void clone(Lista *srcPtr, Lista **destPtr);
+
+void clone_2(Lista *srcPtr, Lista **destPtr);

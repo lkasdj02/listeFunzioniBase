@@ -12,7 +12,7 @@ int isempty(Lista *ptr) {
 
 void print_list(Lista *ptr) {
   for (Lista *current = ptr; current != NULL; current = current->nextPtr)
-    printf("valore: %d\n", current->valore);
+    printf("valore: %d --- indirizzo HEAP: %p\n", current->valore, current);
 }
 
 void pre_insert(Lista **ptrPtr, int val) {
@@ -153,5 +153,37 @@ Lista *slice(Lista *ptr, int n1, int n2) {
       }
       return new_head;
     }
+  }
+}
+
+void clone(Lista *srcPtr, Lista **destPtr) {
+  
+  // nel caso in cui la lista da copiare
+  // sia vuota, non si fa niente.
+  if (srcPtr == NULL) 
+    return;
+
+  (*destPtr) = srcPtr;
+}
+
+void clone_2(Lista *srcPtr, Lista **destPtr) {
+  
+  // nel caso in cui la lista da copiare
+  // sia vuota, non si fa niente.
+  if (srcPtr == NULL) 
+    return;
+
+  (*destPtr) = (Lista *)malloc(sizeof(Lista));
+  (*destPtr)->valore = srcPtr->valore;
+  (*destPtr)->nextPtr = NULL;
+  Lista *current = (*destPtr);
+  
+  srcPtr = srcPtr->nextPtr;
+  while(srcPtr != NULL) {
+    current->nextPtr =  (Lista *)malloc(sizeof(Lista));  
+    current->nextPtr->valore = srcPtr->valore;
+    current->nextPtr->nextPtr = NULL;
+    current = current->nextPtr;
+    srcPtr = srcPtr->nextPtr;
   }
 }

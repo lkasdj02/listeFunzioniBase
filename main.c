@@ -43,4 +43,9 @@ int main() {
   } else {
     print_list(nuova_slice);
   }
+
+  // TESTING CLONE VERA
+  Lista *new_list = NULL;
+  clone_2(lista, &new_list);
+  print_list(new_list);
 }
